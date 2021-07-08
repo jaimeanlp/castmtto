@@ -47,7 +47,7 @@ $(function(){
 			id_servicio: $('#idServicio').val(),
 		};
 		$.post('asigna.php', postData, function(response){
-			console.log(response);
+			//console.log(response);
 			agregaForm();
 			actualizaServicio();
 		});
