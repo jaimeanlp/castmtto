@@ -28,6 +28,7 @@ $(function(){
 		};
 		let url = edit === false ? 'addServicio.php' : 'editaServicio.php';
 		$.post(url, postData, function(response){
+			console.log(response);
 			const service = JSON.parse(response);
 			if (service.valida) {
 				actualizaServicio();

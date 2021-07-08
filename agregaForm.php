@@ -14,7 +14,7 @@ include('conexion.php');
                                     $result = mysqli_query($conexion, $query);
                                 ?>
                                 <select class="form-select" name="proveedor" id="proveedor" required>
-                                    <option value="">Proveedor</option>
+                                    <option value="0">Proveedor</option>
                                     <?php
                                         while ($raw = mysqli_fetch_array($result)) {
                                          echo '<option value="' . $raw['id'] . '">' . $raw['nombre'] . '</option>';  
@@ -28,7 +28,7 @@ include('conexion.php');
                                     $result = mysqli_query($conexion, $query);
                                 ?>
                                 <select class="form-select" name="tipo" id="tipo" required>
-                                <option value="">Tipo de servicio</option>
+                                <option value="0">Tipo de servicio</option>
                                     <?php
                                         while ($raw = mysqli_fetch_array($result)) {
                                          echo '<option value="' . $raw['id'] . '">' . $raw['nombre'] . '</option>';  
@@ -46,7 +46,7 @@ include('conexion.php');
                                     $result = mysqli_query($conexion, $query);
                                 ?>
                                 <select class="form-select mi-selector" name="cliente" id="cliente" required>
-                                    <option value="">Cliente</option>
+                                    <option value="0">Cliente</option>
                                     <?php
                                         while ($raw = mysqli_fetch_array($result)) {
                                          echo '<option value="' . $raw['id'] . '">' . $raw['nombre'] . '</option>';  

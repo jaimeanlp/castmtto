@@ -12,14 +12,14 @@
     $proveedor = $_POST['proveedor'];
     $tipo = $_POST['tipo'];
     $falla = $_POST['falla'];
-    $cliente = $_POST['cliente'];
+    $cliente = ($_POST['cliente'] != 0 ) ? $_POST['cliente'] : NULL;
     $mensaje = (isset($orden)) && strlen(trim($orden))? "" : "<br>Numero de orden requerido";
     $query1 = "select id FROM servicio WHERE num_orden LIKE '%$orden%';";
     $result1 = mysqli_query($conexion, $query1);
-    $mensaje .= ($proveedor == "0") ? "" : "<br>Proveedor requerido";
-    $mensaje .= ($tipo == "0") ? "" : "<br>Tipo requerido";
+    $mensaje .= ($proveedor != 0) ? "" : "<br>Proveedor requerido";
+    $mensaje .= ($tipo != 0) ? "" : "<br>Tipo requerido";
     $mensaje .= ((isset($falla)) && strlen(trim($falla))) ? "" : "<br>Falla requerida</br>"; 
-    if (mysqli_num_rows($result1)) {
+    if (mysqli_num_rows($result1) > 0 && isset($orden) && strlen(trim($orden))) {
         $mensaje = "<br>Número de orden ya existente";
     }
     $query = "INSERT INTO servicio( num_orden, fecha_inicio, fecha_fin, alta, id_status, id_proveedor,
@@ -29,7 +29,7 @@
     if (!$result || $mensaje != "") {
         $json[] = array(
             'valida' => 0,
-            'mensaje' => 'No se pudo agregar el servicio' . $mensaje,
+            'mensaje' => 'No se pudo agregar el servicio' . $mensaje .$query,
         );
     }else{
         $json[] = array(

@@ -16,9 +16,8 @@
         $host = "files.000webhost.com";
         $usrftp = "castpuebla";
         $pwdftp = "qwLK6734";
-    
         $conn = ftp_connect($host) or die("no se puede conectar a $host");
-    
+        echo ftp_pwd($conn);
         if (@ftp_login($conn, $usrftp, $pwdftp)) {
             echo "Conectado como $usrftp@$host\n";
         } else {
