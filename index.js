@@ -11,8 +11,6 @@ $(function(){
 			type: 'POST',
 			data: {search: search},
 			success: function(response){
-				//let servicio = JSON.parse(response);
-				//let template;
 				$('#serviciosTabla').html(response);
 			}
 		})
@@ -145,6 +143,29 @@ $(function(){
 		})
 	});
 
+	$(document).on('click', '.contact-client', function(){
+		let element = $(this)[0].parentElement.parentElement;
+		let id_servicio = $(element).attr('service-id');
+		id_status = 6;
+		const postData = {
+			id_status: 7,
+			id_servicio: id_servicio,
+		};
+		$.post('cambiaStatus.php', postData, function(response){
+			const status = JSON.parse(response);
+			if (status.valida) {
+				muestraResult(status.mensaje);
+				id_status = 6;
+				$.post('ajaxListaServicios.php', {id_status}, function(response1){
+					$('#serviciosTabla').html(response1);
+				});
+			}else{
+				muestraResult(status.mensaje);
+			}
+		});
+
+	});
+
+	
+
 });
-
-

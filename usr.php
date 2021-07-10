@@ -15,8 +15,6 @@
         }
     */
     class User{
-
-
         private $username;
         private $nombre;
         public function usrExists($user, $pwd){

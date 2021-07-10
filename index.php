@@ -10,17 +10,14 @@
         $password = $_POST['pwd'];
 
         if ($objectUser->usrExists($user,$password)) {
-            echo "1";
             $userSession->setCurrentUser($user);
-            $objectUser->setUsr($user, $password);
+            //$objectUser->setUsr($user, $password);
             include_once 'servicio.php';
         }else{
             $errorLogin = "Nombre de usuario y o password incorrecto";
-            echo "2";
             include_once 'log.php';
         }
     }else{
-        echo "3";
         include_once 'log.php';
     }
 ?>
