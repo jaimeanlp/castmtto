@@ -24,7 +24,7 @@
     }
     $query = "INSERT INTO servicio( num_orden, fecha_inicio, fecha_fin, alta, id_status, id_proveedor,
      id_tipo, id_usr, falla, id_cte) VALUES 
-     ('$orden', NULL,NULL,'$alta', '1', '$proveedor', '$tipo', $usuario_alta, '$falla', '$cliente')";
+     ('$orden', NULL,NULL,'$alta', '5', '$proveedor', '$tipo', $usuario_alta, '$falla', '$cliente')";
     $result = mysqli_query($conexion, $query);
     if (!$result || $mensaje != "") {
         $json[] = array(

@@ -39,7 +39,7 @@
             <div class="col-md-8">
                 <div class="card my-4 p-0" id=div-filtro>
                 <?php
-                    $query = "SELECT id, nombre FROM cat_status";
+                    $query = "SELECT id, nombre FROM cat_status WHERE id IN (5,6,7,8,9)";
                     $result = mysqli_query($conexion, $query);
                 ?>
                     <select class="form-select" name="select-filtro" id="select-filtro">

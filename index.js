@@ -47,14 +47,32 @@ $(function(){
 			id_servicio: $('#idServicio').val(),
 		};
 		$.post('asigna.php', postData, function(response){
-			//console.log(response);
+			console.log(response);
+			const asigna = JSON.parse(response);
+			if (asigna.valida) {
+				if (asigna.validaStatus && asigna.validaFTP) {
+					muestraResult(asigna.mensaje + asigna.mensajeStatus + asigna.mensajeFTP);
+				}else{
+					$('#serviceResult').removeClass('alert-success').addClass('alert-warning');
+					muestraResult(asigna.mensaje + asigna.mensajeStatus + asigna.mensajeFTP);
+				}
+			}else{
+				$('#serviceResult').removeClass('alert-success').addClass('alert-danger');
+				muestraResult(asigna.mensaje);
+			}
 			agregaForm();
 			actualizaServicio();
 		});
 	});
 
 	$(document).on('change', '#select-filtro', function(){
-		
+		const postData = {
+			id_status: $('#select-filtro').val(),
+		};
+		$.post('ajaxListaServicios.php', postData, function(response){
+			//console.log(response);
+			$('#serviciosTabla').html(response);
+		});
 	});
 
 
